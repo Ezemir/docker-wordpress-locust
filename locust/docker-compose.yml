@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+    locust:
+        image: locustio/locust
+        environment:
+            TARGET_URL: http://localhost
+            LOCUST_OPTS: "-c 10 -r 10"
+            LOCUSTFILE_PATH: /locust/locustfile.py
+        volumes:
+            - ./:/locust
+        ports:
+            - 8089:8089
+        network_mode: host
